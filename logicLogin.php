@@ -26,8 +26,8 @@ function inicioSesion()
 
         $intentos = isset($_COOKIE['cantIntentos']) ? $_COOKIE['cantIntentos'] : 0;
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = filter_var($_POST['username'],FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = filter_var($_POST['password'],FILTER_SANITIZE_STRING);
 
         $sql = "SELECT * FROM users WHERE username = :username AND password = :password";
         $stmt = $conn->prepare($sql);
