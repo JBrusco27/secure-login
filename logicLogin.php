@@ -42,6 +42,7 @@ function inicioSesion()
             echo "Inicio de sesión exitoso";
             $verifExpiry = time() + (1 * 60 * 60); // Calcula la fecha y hora de expiración en 1 hora
             setcookie('cantIntentos', 0, $verifExpiry, '/');
+            setcookie('logExp', 0, $verifExpiry, '/');
         } else {
             if ($intentos <= 3) {
                 echo "Nombre de usuario o contraseña incorrectos";
@@ -55,4 +56,4 @@ function inicioSesion()
     }
 
 }
-?>
+?>  
